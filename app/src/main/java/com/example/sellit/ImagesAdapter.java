@@ -1,6 +1,7 @@
 package com.example.sellit;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,8 +50,11 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ImageViewH
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Toast.makeText(mContext,""+upload.getItem_name(),Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext.getApplicationContext(), Custompopup.class);
+                intent.putExtra("username",upload.getItem_name());
+                intent.putExtra("Id",upload.getId());
+                mContext.startActivity(intent);
+                //Toast.makeText(mContext,""+upload.getItem_name(),Toast.LENGTH_SHORT).show();
             }
         });
     }
